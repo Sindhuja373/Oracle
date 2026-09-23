@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vithi | Oracle Practice</title>
+<style>
+:root{
+ --green:#79be43; --green2:#9ad566; --deep:#0b2318; --ink:#15231b;
+ --muted:#617168; --line:#dfe8df; --soft:#f3f8ef; --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:Arial,"Helvetica Neue",sans-serif;line-height:1.4;overflow-x:hidden}
+nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line);background:#fff}
+.logo img{width:92px;height:auto;display:block}
+nav a{font-size:13px;font-weight:700;text-decoration:none;color:#59665e;margin-left:22px}
+.wrap{max-width:1140px;width:100%;margin:0 auto;padding:0 5vw}
+.k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:900}
+.hero{background:linear-gradient(135deg,#f8fbf6 0%,#fff 62%,#eff7ea 100%);padding:54px 0 46px}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:35px;align-items:end}
+h1{font-size:clamp(42px,6vw,72px);line-height:.97;letter-spacing:-.045em;margin:11px 0 18px;color:var(--deep)}
+h1 span{color:var(--green)}
+.lead{font-size:18px;color:var(--muted);max-width:710px;margin:0}
+.oracle-badge{justify-self:end;background:var(--deep);color:#fff;border-radius:13px;padding:22px 24px;min-width:250px}
+.oracle-badge small{display:block;color:var(--green2);font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:10px}
+.oracle-badge strong{display:block;font-size:23px;margin-top:7px}
+.oracle-badge p{color:#c8d8ce;font-size:12px;margin:8px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:5px;text-decoration:none;font-weight:800;font-size:14px;background:var(--deep);color:#fff;margin-top:20px}
+.btn.green{background:var(--green)}
+.section{padding:34px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:19px}
+.section-head p{max-width:550px;color:var(--muted);margin:0;font-size:14px}
+h2{font-size:clamp(29px,4vw,43px);line-height:1.02;letter-spacing:-.03em;margin:5px 0 0;color:var(--deep)}.fit-title{white-space:nowrap;font-size:clamp(26px,3.25vw,38px)}.oracle-value-head{display:block}.oracle-value-head p{margin:12px 0 0;color:var(--muted);opacity:.72;max-width:900px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{border:1px solid var(--line);border-radius:10px;padding:19px;background:#fff}
+.card b{font-size:10px;letter-spacing:.12em;color:var(--green)}
+.card h3{font-size:17px;line-height:1.1;margin:7px 0 6px;color:var(--deep)}
+.card p{font-size:12.5px;color:var(--muted);margin:0}
+.oracle-strip{background:var(--deep);border-radius:14px;padding:27px;color:#fff}
+.oracle-strip .section-head{margin-bottom:16px}
+.oracle-strip h2{color:#fff}
+.oracle-strip .section-head p{color:#c9d9ce}
+.oracle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.oracle-item{padding:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);border-radius:9px}
+.oracle-item b{font-size:13px}
+.oracle-item span{display:block;color:#c9d9ce;font-size:11px;margin-top:4px}
+.lifecycle{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #d9e5d8;margin-top:16px}
+.life{padding:18px 12px;border-right:1px solid var(--line)}
+.life:last-child{border-right:0}
+.life b{font-size:11px;color:var(--green);letter-spacing:.08em}
+.life h3{font-size:16px;margin:7px 0 4px;color:var(--deep)} .life p{font-size:12px;color:var(--muted);margin:0}
+.proof{display:grid;grid-template-columns:1.1fr .9fr;gap:11px}
+.box{border:1px solid var(--line);border-radius:11px;padding:22px;background:#fff}
+.box h3{font-size:19px;color:var(--deep);margin:8px 0 5px}
+.box p{color:var(--muted);font-size:13px;margin:0}
+.cta{background:linear-gradient(135deg,#edf6e9,#f9fcf7);text-align:center;padding:45px 0;border-top:1px solid var(--line)}
+.cta p{max-width:650px;color:var(--muted);margin:0 auto;font-size:15px}
+.cta .btn{margin-top:19px}
+footer{font-size:11px;color:#819087;text-align:center;padding:12px 5vw;border-top:1px solid var(--line)}
+@media(max-width:780px){
+ nav{padding:0 18px}nav a{display:none}
+ .wrap{padding:0 20px}.fit-title{white-space:normal;font-size:30px}.oracle-value-head p{margin-top:10px}
+ .hero{padding:45px 0 38px}
+ .hero-grid{grid-template-columns:1fr;gap:18px}
+ .oracle-badge{justify-self:start;min-width:0;width:100%}
+ .section{padding:29px 0}
+ .section-head{display:block}
+ .section-head p{margin-top:9px}
+ .cards{grid-template-columns:1fr 1fr}
+ .oracle-strip{padding:23px 20px}
+ .oracle-grid{grid-template-columns:1fr}
+ .lifecycle{grid-template-columns:1fr;border-top:0}
+ .life{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}
+ .proof{grid-template-columns:1fr}
+}
+@media(max-width:430px){
+ .wrap{padding:0 17px}.fit-title{font-size:27px}.oracle-value-head p{font-size:13px}
+ h1{font-size:41px}
+ .cards{grid-template-columns:1fr}
+ .logo img{width:82px}
+ .oracle-strip{border-radius:11px}
+}
+
+/* Final responsive layer */
+html { width:100%; max-width:100%; overflow-x:hidden; }
+body { width:100%; max-width:100%; min-width:0; overflow-x:hidden; }
+img { max-width:100%; height:auto; }
+.wrap { width:min(1120px, 100%); margin-inline:auto; }
+.section, .hero, .bottom { width:100%; max-width:100%; }
+.hero-grid { min-width:0; }
+.hero-grid > *, .section-head > *, .oracle > *, .proof > *, .card { min-width:0; }
+.lead, .section-head p, .oracle p, .card p { overflow-wrap:anywhere; }
+.fit-title { white-space:nowrap; }
+
+@media (min-width: 1400px) {
+  .hero { padding-top:72px; padding-bottom:64px; }
+  .wrap { width:min(1180px, calc(100% - 120px)); }
+  .fit-title { font-size:38px; }
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+  .wrap { width:min(1080px, calc(100% - 72px)); }
+  .hero-grid { grid-template-columns:1fr .48fr; gap:24px; }
+  .cards { grid-template-columns:repeat(2,1fr); }
+  .fit-title { font-size:34px; }
+}
+
+@media (max-width: 900px) {
+  nav { padding-inline:24px; }
+  nav a { margin-left:14px; }
+  .wrap { width:100%; padding-inline:24px; }
+  .hero { padding:52px 0 44px; }
+  .hero-grid { grid-template-columns:1fr; gap:22px; }
+  .oracle-badge { justify-self:start; width:100%; min-width:0; }
+  .section { padding:34px 0; }
+  .section-head { display:block; }
+  .section-head p { margin-top:10px; }
+  .fit-title { white-space:normal; font-size:clamp(30px, 5vw, 38px); }
+  .cards { grid-template-columns:repeat(2,1fr); }
+  .oracle-strip { padding:24px; }
+  .oracle-grid { grid-template-columns:repeat(3,1fr); }
+  .proof { grid-template-columns:1fr; }
+  .bottom { padding:44px 0; }
+}
+
+@media (max-width: 600px) {
+  nav { height:58px; padding-inline:18px; }
+  nav a { display:none; }
+  .wrap { padding-inline:18px; }
+  .hero { padding:44px 0 38px; }
+  h1 { font-size:clamp(39px, 12vw, 52px); line-height:.98; }
+  .lead { font-size:16px; }
+  .section { padding:28px 0; }
+  .cards { grid-template-columns:1fr; }
+  .oracle-strip { padding:21px 18px; border-radius:11px; }
+  .oracle-grid { grid-template-columns:1fr; }
+  .fit-title { font-size:clamp(28px, 8vw, 34px); }
+  .k { font-size:10px; }
+  .btn { width:100%; }
+}
+
+@media (max-width: 380px) {
+  .wrap { padding-inline:15px; }
+  h1 { font-size:38px; }
+  h2 { font-size:28px; }
+  .fit-title { font-size:27px; }
+  .oracle-strip { padding:19px 15px; }
+}
+
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 900px) {
+  .hero { padding-top:30px; padding-bottom:28px; min-height:auto; }
+  .hero-grid { grid-template-columns:1fr 1fr; align-items:center; }
+  .oracle-badge { width:auto; }
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><img src="data:image/png;base64,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" alt="Vithi IT Solutions"></div>
+  <div><a href="#oracle">Oracle</a><a href="#services">Services</a><a href="#contact">Connect</a></div>
+</nav>
+
+<section class="hero">
+<div class="wrap hero-grid">
+  <div>
+    <div class="k">Vithi IT Solutions · Oracle Practice</div>
+    <h1>Oracle capabilities for <span>what's next.</span></h1>
+    <p class="lead">Vithi's Oracle practice focuses on Oracle Fusion, EBS and Apps Modernization, helping organizations modernize applications, connect systems and extend Oracle capabilities.</p>
+    <a class="btn green" href="#oracle">Explore Oracle →</a>
+  </div>
+  <div class="oracle-badge">
+    <small>Primary focus</small>
+    <strong>Oracle Fusion · EBS · Apps Modernization</strong>
+    <p>Implementation · Optimization · Support</p>
+  </div>
+</div>
+</section>
+
+<section id="oracle" class="section">
+<div class="wrap">
+  <div class="oracle-strip">
+    <div class="section-head">
+      <div><div class="k" style="color:#9ad566">Oracle</div><h2>One practice. Multiple Oracle touchpoints.</h2></div>
+      <p>Built for organizations that are transforming, optimizing or supporting an Oracle landscape.</p>
+    </div>
+    <div class="oracle-grid">
+      <div class="oracle-item"><b>Oracle Fusion</b><span>Functional · Technical · Implementation · Support</span></div>
+      <div class="oracle-item"><b>Oracle EBS</b><span>Enterprise applications · Modernization · Support</span></div>
+      <div class="oracle-item"><b>Apps Modernization</b><span>Agentic AI · Integration · OIC · VBCS · APEX</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="services" class="section">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="k">Where Vithi Fits</div><h2>Across the Oracle lifecycle.</h2></div>
+    <p>Choose the point in the journey that best matches your current priorities.</p>
+  </div>
+  <div class="lifecycle">
+    <div class="life"><b>01 · FUSION</b><h3>Oracle Fusion</h3><p>Functional and technical capabilities across Oracle Fusion Cloud applications.</p></div>
+    <div class="life"><b>02 · EBS</b><h3>Oracle EBS</h3><p>Enterprise application support and modernization aligned to business needs.</p></div>
+    <div class="life"><b>03 · MODERNIZE</b><h3>Apps Modernization</h3><p>Modernize Oracle applications with extensions, integrations and digital experiences.</p></div>
+    <div class="life"><b>04 · INTELLIGENT</b><h3>AI & Integration</h3><p>Agentic AI, OIC, VBCS and APEX to extend and connect Oracle environments.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+  <div class="oracle-value-head">
+    <div class="k">Oracle Value</div>
+    <h2 class="fit-title">Where could we fit into your Oracle journey?</h2>
+    <p>Whether you're transforming, optimizing or modernizing an Oracle environment, explore the areas where Vithi can potentially add value.</p>
+  </div>
+  <div class="cards">
+       <div class="card"><b>01 · INTEGRATE</b><h3>OIC & Integration</h3><p>Connect Oracle Fusion and EBS with surrounding business systems and data flows.</p></div>
+    <div class="card"><b>02 · EXTEND</b><h3>VBCS & APEX</h3><p>Build extensions, custom applications and interfaces when standard capabilities need to go further.</p></div>
+    <div class="card"><b>03 · INTELLIGENT</b><h3>Agentic AI</h3><p>Bring AI-driven intelligence into business processes to reduce time and effort and support better decisions.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="contact" class="cta">
+<div class="wrap">
+  <div class="k">Next Step</div>
+  <h2>Let's explore your Oracle environment.</h2>
+  <p>A brief 20-minute conversation to introduce Vithi's Oracle capabilities, understand your environment at a high level, and explore where Fusion, EBS or Apps Modernization could potentially fit.</p>
+  <a class="btn" href="https://outlook.office.com/mail/deeplink/compose?to=sindhuja.kaitha@vithiit.com&subject=Oracle%20Discussion%20with%20Vithi&body=Hi%20Sindhu%2C%0A%0AI%E2%80%99d%20like%20to%20learn%20more%20about%20Vithi%E2%80%99s%20Oracle%20capabilities.%0A%0ABest%20regards%2C" target="_blank" rel="noopener">Discuss Oracle →</a>
+</div>
+</section>
+
+<footer>Vithi IT Solutions · Oracle Practice · sindhuja.kaitha@vithiit.com</footer>
+</body>
+</html>
